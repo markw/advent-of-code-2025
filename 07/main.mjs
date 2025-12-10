@@ -82,11 +82,7 @@ while (row++ < grid.length - 1) {
 function bfs() {
   levels.reverse().forEach(r=>{
     r.forEach(n => {
-      if (n.children.length == 0) {
-        n.numPaths = 1
-      } else {
-        n.numPaths = n.children.reduce((a,b)=>a+b.numPaths, 0)
-      }
+      n.numPaths = n.children.length == 0 ? 1 : n.children.reduce((a,b)=>a+b.numPaths, 0)
     })
   })
   return levels.at(-1)[0].numPaths
